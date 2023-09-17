@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +27,7 @@
         <div class="child">
         <a href="p2.html" style=" text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Home</i></a>    
         <a href=""style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>About Us</i></a>    
-        <a href="services.html"style=" text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Services</i></a>     
+        <a href="appointment.php"style=" text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Appointment</i></a>     
         <a href="Gallery"style=" text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Gallery</i></a>      
         <a href="login.php""style=" text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Login</i></a>          
        </div>
@@ -30,7 +38,7 @@
     </div>
     </div>
     <footer>
-        <a href="appointment.html">
+        <a href="appointment.php">
             <h2 class="f1">
                 &#9993; Get A Free <br> Appointment
             </h2>

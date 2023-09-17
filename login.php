@@ -1,3 +1,52 @@
+<?php 
+
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$email = $_POST['email'];
+		$pass = $_POST['pass'];
+
+
+		if(!empty($email) && !empty($pass) )
+		{
+
+			//read from database
+			$query = "select * from users where email = '$email' limit 1";
+			$result = mysqli_query($con, $query);
+
+			if($result)
+			{
+				if($result && mysqli_num_rows($result) > 0)
+				{
+
+					$user_data = mysqli_fetch_assoc($result);
+					
+					if($user_data['pass'] === $pass)
+					{
+
+						$_SESSION['user_id'] = $user_data['user_id'];
+						header("Location: index.php");
+						die;
+					}
+				}
+			}
+			
+			echo "wrong username or password!";
+		}else
+		{
+			echo "wrong username or password!";
+		}
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +111,7 @@
     </style>
 </head>
 <body>
-        <form  class="one1" >
+        <form method="post" class="one1" >
            
             <img src="logo.jpg" alt="" style="width: 470px; height: 370px;">
                 <H1>Login Page</h1><br>
@@ -70,7 +119,7 @@
                 <div class="p2"> <input placeholder="Password" type="password" name="pass"></div><br>
                 <input type="submit" name="submit" value="Login" class="b1" style="width: 115px;"><br><br><hr>
                 <br><br>
-                Don't have account? <a href="signup.html">Register</a>
+                Don't have account? <a href="signup.php">Register</a>
             </form>        
 </body>
 </html>
